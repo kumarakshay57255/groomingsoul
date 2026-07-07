@@ -1,0 +1,280 @@
+[
+  {
+    "slug": "admin-01-dashboard",
+    "file": "screenshots-admin/admin-01-dashboard.png",
+    "title": "Admin Dashboard (KPIs)",
+    "summary": "Realtime overview the moment an admin signs in. Three blocks: urgent action queue, foundation health, catalogue. Recent leads + purchases at the bottom.",
+    "youSee": [
+      "Receipts to verify · New therapy leads today · Tests pending review · Certificates to dispatch",
+      "Active enrolments, expiring soon, total students, revenue last 30 days",
+      "Published courses count, diplomas count, quick-action shortcuts",
+      "Two recent-activity panels (latest leads + latest purchases)"
+    ],
+    "youCan": [
+      "Click any KPI tile to drill into the filtered manager",
+      "Refresh stats"
+    ]
+  },
+  {
+    "slug": "admin-02-therapists-list",
+    "file": "screenshots-admin/admin-02-therapists-list.png",
+    "title": "Therapists Directory",
+    "summary": "Live data behind the public /therapy page. Add, edit, archive, restore therapists. Photo upload + specialisation chips supported.",
+    "youSee": [
+      "Search bar and \"Show archived\" toggle",
+      "Table: photo, name, designation, experience, specialisation chips, status (Accepting / Waitlist / Archived)",
+      "Action icons: View on site, Edit, Archive/Restore"
+    ],
+    "youCan": [
+      "Click New therapist to add a member with photo + bio + chips",
+      "Toggle 'Accepting new clients' to flip a card to Waitlist on the public site",
+      "Archive removes from public listings without losing data"
+    ]
+  },
+  {
+    "slug": "admin-03-therapist-editor",
+    "file": "screenshots-admin/admin-03-therapist-editor.png",
+    "title": "Therapist Editor Modal",
+    "summary": "Full editor for a therapist row. Same form for creating + editing.",
+    "youSee": [
+      "Square photo uploader on the left with live preview",
+      "Name, designation, years of experience, languages (CSV), specialisation chips (multi-select)",
+      "Bio textarea, Position number (for grid order), Accepting toggle"
+    ],
+    "youCan": [
+      "Upload a JPG/PNG/WebP photo (server stores it and unlinks on replace)",
+      "Toggle specialisation chips on/off",
+      "Set Accepting new clients to false to show Waitlist badge publicly"
+    ]
+  },
+  {
+    "slug": "admin-04-team-list",
+    "file": "screenshots-admin/admin-04-team-list.png",
+    "title": "Core Team & Founder",
+    "summary": "Two sections in one screen: a top editorial card to edit Founder message + Vision + Mission, and a list of team members below.",
+    "youSee": [
+      "Foundation editorial card (Founder message, signature, Vision, Mission)",
+      "Search, Show archived, New member",
+      "Table with crown icon for the Founder row, role, position, status"
+    ],
+    "youCan": [
+      "Edit the Founder's published message and vision/mission inline (Save content)",
+      "Add team members; mark exactly one as Founder",
+      "Founder row is delete-protected (lock icon instead of trash)"
+    ]
+  },
+  {
+    "slug": "admin-05-team-viewer",
+    "file": "screenshots-admin/admin-05-team-viewer.png",
+    "title": "Team Member Viewer Modal",
+    "summary": "Read-only preview of a team member exactly as the homepage will render them. Includes timestamps, photo path, and an Edit shortcut.",
+    "youSee": [
+      "Photo banner + name + role",
+      "Bio, position, created and updated timestamps",
+      "Edit + Close buttons"
+    ],
+    "youCan": [
+      "Open the editor from here",
+      "Verify data before publishing"
+    ]
+  },
+  {
+    "slug": "admin-06-advisory-list",
+    "file": "screenshots-admin/admin-06-advisory-list.png",
+    "title": "Advisory Panel",
+    "summary": "Senior psychologists and doctors backing the foundation. Drives the dark 'wall of trust' section on the homepage.",
+    "youSee": [
+      "Table of advisors (name, qualification, position, status)",
+      "View / Edit / Delete icons per row"
+    ],
+    "youCan": [
+      "Add an advisor with their photo + qualification",
+      "Archive to hide from public site"
+    ]
+  },
+  {
+    "slug": "admin-07-courses-list",
+    "file": "screenshots-admin/admin-07-courses-list.png",
+    "title": "Courses & Lessons — Catalogue",
+    "summary": "Both Academy and Diploma courses in one table. Filter by type or category; bulk edit not needed because per-course editing is fast.",
+    "youSee": [
+      "Filters: type (all / Academy / Diploma) and category",
+      "Table with cover-colour swatch, slug, category badge, price, validity, publish state",
+      "View / Edit / Delete actions per row"
+    ],
+    "youCan": [
+      "Filter to a category before working",
+      "Click New course to create a fresh row",
+      "Delete a course — blocked with helpful message if it has active purchases"
+    ]
+  },
+  {
+    "slug": "admin-08-course-editor",
+    "file": "screenshots-admin/admin-08-course-editor.png",
+    "title": "Course Editor — Metadata + Curriculum",
+    "summary": "A single page handles metadata (top card) and the full module + lesson curriculum (bottom). Lesson rows show whether the video file is present.",
+    "youSee": [
+      "Form: title, slug, instructor, category, price, validity, hours, cover colour, description, publish toggle",
+      "Curriculum section with 'New module' button",
+      "Per-module list of lessons with green check (has video) or sun pill (no video yet)"
+    ],
+    "youCan": [
+      "Edit any metadata field and click Save changes",
+      "Add / rename / delete modules",
+      "Add / edit / delete lessons (opens lesson modal with drag-drop upload)"
+    ]
+  },
+  {
+    "slug": "admin-09-lesson-modal",
+    "file": "screenshots-admin/admin-09-lesson-modal.png",
+    "title": "Lesson Editor — Drag-Drop Video Upload",
+    "summary": "The single most used admin form. Title + description + duration + position, plus a drag-drop video uploader with live progress bar.",
+    "youSee": [
+      "Title, Description, Duration (seconds), Position fields",
+      "Large 'Drag & drop or click to upload' zone (MP4 / WebM / MOV, 1 GB cap)",
+      "Progress bar appears once a file starts uploading"
+    ],
+    "youCan": [
+      "Drop an MP4 from Finder/Explorer straight into the zone",
+      "Replace an existing video or remove it entirely",
+      "Save without a video (lesson added but locked until video uploaded)"
+    ]
+  },
+  {
+    "slug": "admin-10-leads-list",
+    "file": "screenshots-admin/admin-10-leads-list.png",
+    "title": "Therapy Leads CRM",
+    "summary": "Every booking from the /therapy page lands here. Sorted by newest first. Status pills filter the view (New / Contacted / Scheduled / Closed).",
+    "youSee": [
+      "Status pills with live counts",
+      "Search across name, email, phone, therapist",
+      "Table: client + age, contact, therapist, slot, status, received time"
+    ],
+    "youCan": [
+      "Click any row to open the side drawer with full details",
+      "Filter by status / search"
+    ]
+  },
+  {
+    "slug": "admin-11-lead-drawer",
+    "file": "screenshots-admin/admin-11-lead-drawer.png",
+    "title": "Lead Drawer (right-hand panel)",
+    "summary": "Full lead detail. Tap-to-call phone, tap-to-email, copy-to-clipboard chips on contact info, status dropdown, internal notes textarea, delete button.",
+    "youSee": [
+      "Age, phone, email, slot, therapist requested",
+      "Status dropdown",
+      "Internal notes textarea",
+      "Delete + Save buttons"
+    ],
+    "youCan": [
+      "Update lead status as you progress the conversation",
+      "Capture notes from your phone call",
+      "Click the phone to dial directly from your computer"
+    ]
+  },
+  {
+    "slug": "admin-12-tests-list",
+    "file": "screenshots-admin/admin-12-tests-list.png",
+    "title": "Test Submissions Inbox",
+    "summary": "Every psychometric test submission lands here. Filter by test or by review status.",
+    "youSee": [
+      "Test filter dropdown + Pending / In review / Completed pills",
+      "Table: client, test name, answer count, status, received time"
+    ],
+    "youCan": [
+      "Open any row to read each answer with the matching question text"
+    ]
+  },
+  {
+    "slug": "admin-13-submission-detail",
+    "file": "screenshots-admin/admin-13-submission-detail.png",
+    "title": "Submission Detail — Q&A with Scoring Summary",
+    "summary": "Per-question answers rendered properly: Likert numbers get their scale label, MCQ letters get the full option text, free-text answers preserve line breaks.",
+    "youSee": [
+      "Left rail with client contact info, review-status dropdown, internal summary textarea",
+      "Right column with every question + its answer block (Likert / MCQ / Text)"
+    ],
+    "youCan": [
+      "Type the clinical summary and mark Completed",
+      "Copy phone or email to follow up",
+      "Delete the submission if needed"
+    ]
+  },
+  {
+    "slug": "admin-14-purchases-list",
+    "file": "screenshots-admin/admin-14-purchases-list.png",
+    "title": "Purchases & Receipts",
+    "summary": "Verification queue for the manual QR-checkout flow. Each row shows a thumbnail of the uploaded receipt.",
+    "youSee": [
+      "Status pills (Pending / Active / Expired / Rejected) with counts",
+      "Table: receipt thumb, payer, course, amount, status, received time"
+    ],
+    "youCan": [
+      "Click any row to inspect the full-size receipt",
+      "Approve to start the validity window",
+      "Reject with a note that explains why"
+    ]
+  },
+  {
+    "slug": "admin-15-purchase-drawer",
+    "file": "screenshots-admin/admin-15-purchase-drawer.png",
+    "title": "Receipt Verification Drawer",
+    "summary": "Full-size receipt + payer contact + admin note. Approve sets activated/expires timestamps; Reject saves a reason.",
+    "youSee": [
+      "Receipt preview, click to open in a new tab",
+      "Payer email + phone with copy buttons",
+      "Validity badge from the course definition",
+      "Approve & unlock + Reject buttons (only shown when status is Pending)"
+    ],
+    "youCan": [
+      "Compare the receipt against the course price visually",
+      "Approve to instantly unlock the course for the student",
+      "Reject with a note explaining why"
+    ]
+  },
+  {
+    "slug": "admin-16-certificates-list",
+    "file": "screenshots-admin/admin-16-certificates-list.png",
+    "title": "Certificate Dispatch Queue",
+    "summary": "When a student hits 100% on a diploma, a row appears here automatically. Move it through Printed → Dispatched → Delivered.",
+    "youSee": [
+      "Status pills (Queued / Printed / Dispatched / Delivered) with counts",
+      "Search across student, course, tracking ID",
+      "Table: student, course, status, tracking, queued time"
+    ],
+    "youCan": [
+      "Click any row to open the dispatch drawer",
+      "Filter to a particular status step"
+    ]
+  },
+  {
+    "slug": "admin-17-staff-list",
+    "file": "screenshots-admin/admin-17-staff-list.png",
+    "title": "Staff & Roles",
+    "summary": "Add, edit, deactivate, or delete admin/intern accounts. Strict self-protection prevents an admin from accidentally locking themselves out.",
+    "youSee": [
+      "Search, role filter (Admin / Intern)",
+      "Table with 'You' badge on your own row",
+      "Role dropdown inline, status pill, Edit / Pause / Delete icons"
+    ],
+    "youCan": [
+      "Invite by email — system generates a one-time temporary password",
+      "Promote intern → admin via dropdown",
+      "Deactivate to revoke login + sessions instantly",
+      "Delete a staff account (blocked for self or last admin)"
+    ]
+  },
+  {
+    "slug": "admin-18-staff-invite",
+    "file": "screenshots-admin/admin-18-staff-invite.png",
+    "title": "Invite Staff Modal",
+    "summary": "Creates a new admin or intern account. A random 10-char temp password is shown on screen so you can share it manually until Phase 5 wires up email delivery.",
+    "youSee": [
+      "Name, email, contact number (10-digit Indian validation), role dropdown",
+      "A yellow help banner explaining the temp-password flow"
+    ],
+    "youCan": [
+      "Issue a new staff account in seconds"
+    ]
+  }
+]

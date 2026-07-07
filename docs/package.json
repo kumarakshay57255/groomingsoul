@@ -1,0 +1,13 @@
+{
+  "name": "groomingsouls-docs",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "capture": "node capture-flow.mjs",
+    "build": "node build-pdf.mjs"
+  },
+  "dependencies": {
+    "playwright": "^1.49.0"
+  }
+}

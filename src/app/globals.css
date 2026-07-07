@@ -1,26 +1,140 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* Brand colors — extracted from the Grooming Souls logo */
+  --color-cream: #fbf7ee;
+  --color-cream-deep: #f4ecdb;
+  --color-ink: #2a2520;
+  --color-ink-soft: #574b40;
+  --color-brand-brown: #5c3a2e;
+  --color-brand-brown-light: #84574a;
+  --color-sage: #7a8b5a;
+  --color-sage-deep: #5a6a3f;
+  --color-sage-soft: #cfd5b8;
+  --color-coral: #e8946a;
+  --color-coral-soft: #f7d4be;
+  --color-sun: #f5c44c;
+  --color-clinical: #3f5f8a;
+  --color-clinical-deep: #2d4868;
+  --color-clinical-soft: #d8e2f0;
+  --color-line: #e9e1ce;
+
+  /* New palette — hero + therapy showcase refresh */
+  --color-navy: #012057;
+  --color-navy-deep: #01163d;
+  --color-navy-soft: #d3dcee;
+  --color-terracotta: #b7714e;
+  --color-terracotta-soft: #f2ddcf;
+  --color-gold: #c9a356;
+  --color-gold-soft: #f0dfa6;
+
+  /* Typography */
+  --font-sans: var(--font-sans);
+  --font-display: var(--font-display);
+  --font-script: var(--font-script);
+
+  /* Motion */
+  --ease-soft: cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: var(--color-cream);
+    --foreground: var(--color-ink);
+  }
+
+  html,
+  body {
+    background-color: var(--color-cream);
+    color: var(--color-ink);
+  }
+
+  ::selection {
+    background: var(--color-coral-soft);
+    color: var(--color-brand-brown);
+  }
+
+  /* Subtle focus ring tuned for cream background */
+  *:focus-visible {
+    outline: 2px solid var(--color-clinical);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    color: var(--color-brand-brown);
+    letter-spacing: -0.01em;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer utilities {
+  .font-display {
+    font-family: var(--font-display);
+  }
+  .font-script {
+    font-family: var(--font-script);
+  }
+  .text-balance {
+    text-wrap: balance;
+  }
+  .text-pretty {
+    text-wrap: pretty;
+  }
+
+  /* Subtle paper grain for the cream background */
+  .bg-grain {
+    background-image: radial-gradient(
+        rgba(92, 58, 46, 0.035) 1px,
+        transparent 1px
+      ),
+      radial-gradient(rgba(92, 58, 46, 0.025) 1px, transparent 1px);
+    background-size: 28px 28px, 14px 14px;
+    background-position: 0 0, 14px 14px;
+  }
+
+  /* Slow breathing animation for hero blobs */
+  @keyframes breathe {
+    0%,
+    100% {
+      transform: translate3d(0, 0, 0) scale(1);
+      opacity: 0.55;
+    }
+    50% {
+      transform: translate3d(0, -14px, 0) scale(1.06);
+      opacity: 0.75;
+    }
+  }
+  .animate-breathe {
+    animation: breathe 9s ease-in-out infinite;
+  }
+
+  @keyframes floaty {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-6px);
+    }
+  }
+  .animate-floaty {
+    animation: floaty 4s ease-in-out infinite;
+  }
+
+  /* Marquee for advisory panel (optional) */
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+  .animate-marquee {
+    animation: marquee 40s linear infinite;
+  }
 }

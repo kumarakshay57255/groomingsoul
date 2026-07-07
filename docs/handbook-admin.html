@@ -1,0 +1,462 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Running Grooming Souls from the Admin panel</title>
+<style>
+  @page { size: A4; margin: 18mm 14mm; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    color: #2A2520;
+    background: #FBF7EE;
+    line-height: 1.55;
+    font-size: 10.5pt;
+  }
+  .cover {
+    page-break-after: always;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 90vh;
+    padding: 30mm 14mm;
+    background: linear-gradient(160deg, #FBF7EE 0%, #F4ECDB 100%);
+  }
+  .cover .eyebrow {
+    font-size: 9pt;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #7A8B5A;
+  }
+  .cover h1 {
+    font-family: Georgia, 'Cormorant Garamond', serif;
+    font-size: 36pt;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    color: #5C3A2E;
+    margin: 10mm 0 6mm 0;
+    max-width: 170mm;
+  }
+  .cover p { font-size: 11.5pt; max-width: 160mm; color: #574B40; }
+  .meta {
+    margin-top: 16mm;
+    border-top: 1px solid #E9E1CE;
+    padding-top: 5mm;
+    font-size: 9pt;
+    color: #574B40;
+  }
+  .meta strong { color: #5C3A2E; }
+  .toc { page-break-after: always; padding-top: 4mm; }
+  .toc h2 {
+    font-family: Georgia, serif;
+    font-size: 18pt;
+    color: #5C3A2E;
+    margin: 0 0 8mm 0;
+  }
+  .toc ol {
+    list-style: none;
+    padding: 0;
+    counter-reset: step;
+  }
+  .toc li {
+    counter-increment: step;
+    padding: 2.5mm 0;
+    border-bottom: 1px solid #E9E1CE;
+    display: flex;
+    gap: 4mm;
+    font-size: 10pt;
+    color: #2A2520;
+  }
+  .toc li::before {
+    content: counter(step, decimal-leading-zero);
+    color: #7A8B5A;
+    font-variant-numeric: tabular-nums;
+    min-width: 8mm;
+  }
+
+  .screen {
+    page-break-inside: avoid;
+    page-break-after: always;
+    padding-top: 2mm;
+  }
+  .screen:last-of-type { page-break-after: auto; }
+  .screen-head {
+    display: flex;
+    align-items: flex-start;
+    gap: 6mm;
+    margin-bottom: 4mm;
+  }
+  .screen-num {
+    font-family: Georgia, serif;
+    font-size: 16pt;
+    color: #7A8B5A;
+    letter-spacing: 0.04em;
+    min-width: 12mm;
+    padding-top: 1mm;
+  }
+  .screen h2 {
+    font-family: Georgia, serif;
+    color: #5C3A2E;
+    font-size: 17pt;
+    margin: 0;
+    letter-spacing: -0.01em;
+  }
+  .screen .summary {
+    margin: 1.5mm 0 0 0;
+    color: #574B40;
+    font-size: 10.5pt;
+    max-width: 170mm;
+  }
+  .screen img {
+    width: 100%;
+    max-height: 110mm;
+    object-fit: contain;
+    border: 1px solid #E9E1CE;
+    border-radius: 3mm;
+    background: #FFF;
+    display: block;
+    margin-bottom: 4mm;
+  }
+  .kv {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5mm;
+  }
+  .kv h3 {
+    font-family: 'Inter', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    font-size: 7.5pt;
+    color: #7A8B5A;
+    margin: 0 0 2mm 0;
+  }
+  .kv ul {
+    margin: 0;
+    padding-left: 4mm;
+  }
+  .kv li {
+    font-size: 9.8pt;
+    color: #2A2520;
+    margin-bottom: 1.2mm;
+    line-height: 1.45;
+  }
+  code {
+    background: rgba(63, 95, 138, 0.10);
+    border-radius: 3px;
+    padding: 0 4px;
+    font-family: 'JetBrains Mono', Menlo, monospace;
+    font-size: 9pt;
+    color: #2D4868;
+  }
+  strong { color: #5C3A2E; }
+</style>
+</head>
+<body>
+  <section class="cover">
+    <div class="eyebrow">Grooming Souls Mental Health &amp; Welfare · Admin Console Handbook</div>
+    <h1>Running Grooming Souls from the Admin panel</h1>
+    <p>Every page of the admin console explained, with the actions each role can perform. Use this as a quick reference when onboarding a new admin or intern.</p>
+    <div class="meta">
+      Generated automatically on <strong>20 June 2026</strong>
+      ·  Audience: <strong>Foundation staff — admins, interns, dispatch team</strong>
+      ·  18 screens covered
+    </div>
+  </section>
+
+  <section class="toc">
+    <h2>Contents</h2>
+    <ol>
+      <li>Admin Dashboard (KPIs)</li>
+      <li>Therapists Directory</li>
+      <li>Therapist Editor Modal</li>
+      <li>Core Team & Founder</li>
+      <li>Team Member Viewer Modal</li>
+      <li>Advisory Panel</li>
+      <li>Courses & Lessons — Catalogue</li>
+      <li>Course Editor — Metadata + Curriculum</li>
+      <li>Lesson Editor — Drag-Drop Video Upload</li>
+      <li>Therapy Leads CRM</li>
+      <li>Lead Drawer (right-hand panel)</li>
+      <li>Test Submissions Inbox</li>
+      <li>Submission Detail — Q&A with Scoring Summary</li>
+      <li>Purchases & Receipts</li>
+      <li>Receipt Verification Drawer</li>
+      <li>Certificate Dispatch Queue</li>
+      <li>Staff & Roles</li>
+      <li>Invite Staff Modal</li>
+    </ol>
+  </section>
+
+  
+        <section class="screen">
+          <div class="screen-head">
+            <span class="screen-num">01</span>
+            <div>
+              <h2>Admin Dashboard (KPIs)</h2>
+              <p class="summary">Realtime overview the moment an admin signs in. Three blocks: urgent action queue, foundation health, catalogue. Recent leads + purchases at the bottom.</p>
+            </div>
+          </div>
+          <img src="screenshots-admin/admin-01-dashboard.png" alt="Admin Dashboard (KPIs)" />
+          <div class="kv">
+            <div><h3>What you see</h3><ul><li>Receipts to verify · New therapy leads today · Tests pending review · Certificates to dispatch</li><li>Active enrolments, expiring soon, total students, revenue last 30 days</li><li>Published courses count, diplomas count, quick-action shortcuts</li><li>Two recent-activity panels (latest leads + latest purchases)</li></ul></div>
+            <div><h3>What you can do</h3><ul><li>Click any KPI tile to drill into the filtered manager</li><li>Refresh stats</li></ul></div>
+          </div>
+        </section>
+
+        <section class="screen">
+          <div class="screen-head">
+            <span class="screen-num">02</span>
+            <div>
+              <h2>Therapists Directory</h2>
+              <p class="summary">Live data behind the public /therapy page. Add, edit, archive, restore therapists. Photo upload + specialisation chips supported.</p>
+            </div>
+          </div>
+          <img src="screenshots-admin/admin-02-therapists-list.png" alt="Therapists Directory" />
+          <div class="kv">
+            <div><h3>What you see</h3><ul><li>Search bar and "Show archived" toggle</li><li>Table: photo, name, designation, experience, specialisation chips, status (Accepting / Waitlist / Archived)</li><li>Action icons: View on site, Edit, Archive/Restore</li></ul></div>
+            <div><h3>What you can do</h3><ul><li>Click New therapist to add a member with photo + bio + chips</li><li>Toggle 'Accepting new clients' to flip a card to Waitlist on the public site</li><li>Archive removes from public listings without losing data</li></ul></div>
+          </div>
+        </section>
+
+        <section class="screen">
+          <div class="screen-head">
+            <span class="screen-num">03</span>
+            <div>
+              <h2>Therapist Editor Modal</h2>
+              <p class="summary">Full editor for a therapist row. Same form for creating + editing.</p>
+            </div>
+          </div>
+          <img src="screenshots-admin/admin-03-therapist-editor.png" alt="Therapist Editor Modal" />
+          <div class="kv">
+            <div><h3>What you see</h3><ul><li>Square photo uploader on the left with live preview</li><li>Name, designation, years of experience, languages (CSV), specialisation chips (multi-select)</li><li>Bio textarea, Position number (for grid order), Accepting toggle</li></ul></div>
+            <div><h3>What you can do</h3><ul><li>Upload a JPG/PNG/WebP photo (server stores it and unlinks on replace)</li><li>Toggle specialisation chips on/off</li><li>Set Accepting new clients to false to show Waitlist badge publicly</li></ul></div>
+          </div>
+        </section>
+
+        <section class="screen">
+          <div class="screen-head">
+            <span class="screen-num">04</span>
+            <div>
+              <h2>Core Team & Founder</h2>
+              <p class="summary">Two sections in one screen: a top editorial card to edit Founder message + Vision + Mission, and a list of team members below.</p>
+            </div>
+          </div>
+          <img src="screenshots-admin/admin-04-team-list.png" alt="Core Team & Founder" />
+          <div class="kv">
+            <div><h3>What you see</h3><ul><li>Foundation editorial card (Founder message, signature, Vision, Mission)</li><li>Search, Show archived, New member</li><li>Table with crown icon for the Founder row, role, position, status</li></ul></div>
+            <div><h3>What you can do</h3><ul><li>Edit the Founder's published message and vision/mission inline (Save content)</li><li>Add team members; mark exactly one as Founder</li><li>Founder row is delete-protected (lock icon instead of trash)</li></ul></div>
+          </div>
+        </section>
+
+        <section class="screen">
+          <div class="screen-head">
+            <span class="screen-num">05</span>
+            <div>
+              <h2>Team Member Viewer Modal</h2>
+              <p class="summary">Read-only preview of a team member exactly as the homepage will render them. Includes timestamps, photo path, and an Edit shortcut.</p>
+            </div>
+          </div>
+          <img src="screenshots-admin/admin-05-team-viewer.png" alt="Team Member Viewer Modal" />
+          <div class="kv">
+            <div><h3>What you see</h3><ul><li>Photo banner + name + role</li><li>Bio, position, created and updated timestamps</li><li>Edit + Close buttons</li></ul></div>
+            <div><h3>What you can do</h3><ul><li>Open the editor from here</li><li>Verify data before publishing</li></ul></div>
+          </div>
+        </section>
+
+        <section class="screen">
+          <div class="screen-head">
+            <span class="screen-num">06</span>
+            <div>
+              <h2>Advisory Panel</h2>
+              <p class="summary">Senior psychologists and doctors backing the foundation. Drives the dark 'wall of trust' section on the homepage.</p>
+            </div>
+          </div>
+          <img src="screenshots-admin/admin-06-advisory-list.png" alt="Advisory Panel" />
+          <div class="kv">
+            <div><h3>What you see</h3><ul><li>Table of advisors (name, qualification, position, status)</li><li>View / Edit / Delete icons per row</li></ul></div>
+            <div><h3>What you can do</h3><ul><li>Add an advisor with their photo + qualification</li><li>Archive to hide from public site</li></ul></div>
+          </div>
+        </section>
+
+        <section class="screen">
+          <div class="screen-head">
+            <span class="screen-num">07</span>
+            <div>
+              <h2>Courses & Lessons — Catalogue</h2>
+              <p class="summary">Both Academy and Diploma courses in one table. Filter by type or category; bulk edit not needed because per-course editing is fast.</p>
+            </div>
+          </div>
+          <img src="screenshots-admin/admin-07-courses-list.png" alt="Courses & Lessons — Catalogue" />
+          <div class="kv">
+            <div><h3>What you see</h3><ul><li>Filters: type (all / Academy / Diploma) and category</li><li>Table with cover-colour swatch, slug, category badge, price, validity, publish state</li><li>View / Edit / Delete actions per row</li></ul></div>
+            <div><h3>What you can do</h3><ul><li>Filter to a category before working</li><li>Click New course to create a fresh row</li><li>Delete a course — blocked with helpful message if it has active purchases</li></ul></div>
+          </div>
+        </section>
+
+        <section class="screen">
+          <div class="screen-head">
+            <span class="screen-num">08</span>
+            <div>
+              <h2>Course Editor — Metadata + Curriculum</h2>
+              <p class="summary">A single page handles metadata (top card) and the full module + lesson curriculum (bottom). Lesson rows show whether the video file is present.</p>
+            </div>
+          </div>
+          <img src="screenshots-admin/admin-08-course-editor.png" alt="Course Editor — Metadata + Curriculum" />
+          <div class="kv">
+            <div><h3>What you see</h3><ul><li>Form: title, slug, instructor, category, price, validity, hours, cover colour, description, publish toggle</li><li>Curriculum section with 'New module' button</li><li>Per-module list of lessons with green check (has video) or sun pill (no video yet)</li></ul></div>
+            <div><h3>What you can do</h3><ul><li>Edit any metadata field and click Save changes</li><li>Add / rename / delete modules</li><li>Add / edit / delete lessons (opens lesson modal with drag-drop upload)</li></ul></div>
+          </div>
+        </section>
+
+        <section class="screen">
+          <div class="screen-head">
+            <span class="screen-num">09</span>
+            <div>
+              <h2>Lesson Editor — Drag-Drop Video Upload</h2>
+              <p class="summary">The single most used admin form. Title + description + duration + position, plus a drag-drop video uploader with live progress bar.</p>
+            </div>
+          </div>
+          <img src="screenshots-admin/admin-09-lesson-modal.png" alt="Lesson Editor — Drag-Drop Video Upload" />
+          <div class="kv">
+            <div><h3>What you see</h3><ul><li>Title, Description, Duration (seconds), Position fields</li><li>Large 'Drag & drop or click to upload' zone (MP4 / WebM / MOV, 1 GB cap)</li><li>Progress bar appears once a file starts uploading</li></ul></div>
+            <div><h3>What you can do</h3><ul><li>Drop an MP4 from Finder/Explorer straight into the zone</li><li>Replace an existing video or remove it entirely</li><li>Save without a video (lesson added but locked until video uploaded)</li></ul></div>
+          </div>
+        </section>
+
+        <section class="screen">
+          <div class="screen-head">
+            <span class="screen-num">10</span>
+            <div>
+              <h2>Therapy Leads CRM</h2>
+              <p class="summary">Every booking from the /therapy page lands here. Sorted by newest first. Status pills filter the view (New / Contacted / Scheduled / Closed).</p>
+            </div>
+          </div>
+          <img src="screenshots-admin/admin-10-leads-list.png" alt="Therapy Leads CRM" />
+          <div class="kv">
+            <div><h3>What you see</h3><ul><li>Status pills with live counts</li><li>Search across name, email, phone, therapist</li><li>Table: client + age, contact, therapist, slot, status, received time</li></ul></div>
+            <div><h3>What you can do</h3><ul><li>Click any row to open the side drawer with full details</li><li>Filter by status / search</li></ul></div>
+          </div>
+        </section>
+
+        <section class="screen">
+          <div class="screen-head">
+            <span class="screen-num">11</span>
+            <div>
+              <h2>Lead Drawer (right-hand panel)</h2>
+              <p class="summary">Full lead detail. Tap-to-call phone, tap-to-email, copy-to-clipboard chips on contact info, status dropdown, internal notes textarea, delete button.</p>
+            </div>
+          </div>
+          <img src="screenshots-admin/admin-11-lead-drawer.png" alt="Lead Drawer (right-hand panel)" />
+          <div class="kv">
+            <div><h3>What you see</h3><ul><li>Age, phone, email, slot, therapist requested</li><li>Status dropdown</li><li>Internal notes textarea</li><li>Delete + Save buttons</li></ul></div>
+            <div><h3>What you can do</h3><ul><li>Update lead status as you progress the conversation</li><li>Capture notes from your phone call</li><li>Click the phone to dial directly from your computer</li></ul></div>
+          </div>
+        </section>
+
+        <section class="screen">
+          <div class="screen-head">
+            <span class="screen-num">12</span>
+            <div>
+              <h2>Test Submissions Inbox</h2>
+              <p class="summary">Every psychometric test submission lands here. Filter by test or by review status.</p>
+            </div>
+          </div>
+          <img src="screenshots-admin/admin-12-tests-list.png" alt="Test Submissions Inbox" />
+          <div class="kv">
+            <div><h3>What you see</h3><ul><li>Test filter dropdown + Pending / In review / Completed pills</li><li>Table: client, test name, answer count, status, received time</li></ul></div>
+            <div><h3>What you can do</h3><ul><li>Open any row to read each answer with the matching question text</li></ul></div>
+          </div>
+        </section>
+
+        <section class="screen">
+          <div class="screen-head">
+            <span class="screen-num">13</span>
+            <div>
+              <h2>Submission Detail — Q&A with Scoring Summary</h2>
+              <p class="summary">Per-question answers rendered properly: Likert numbers get their scale label, MCQ letters get the full option text, free-text answers preserve line breaks.</p>
+            </div>
+          </div>
+          <img src="screenshots-admin/admin-13-submission-detail.png" alt="Submission Detail — Q&A with Scoring Summary" />
+          <div class="kv">
+            <div><h3>What you see</h3><ul><li>Left rail with client contact info, review-status dropdown, internal summary textarea</li><li>Right column with every question + its answer block (Likert / MCQ / Text)</li></ul></div>
+            <div><h3>What you can do</h3><ul><li>Type the clinical summary and mark Completed</li><li>Copy phone or email to follow up</li><li>Delete the submission if needed</li></ul></div>
+          </div>
+        </section>
+
+        <section class="screen">
+          <div class="screen-head">
+            <span class="screen-num">14</span>
+            <div>
+              <h2>Purchases & Receipts</h2>
+              <p class="summary">Verification queue for the manual QR-checkout flow. Each row shows a thumbnail of the uploaded receipt.</p>
+            </div>
+          </div>
+          <img src="screenshots-admin/admin-14-purchases-list.png" alt="Purchases & Receipts" />
+          <div class="kv">
+            <div><h3>What you see</h3><ul><li>Status pills (Pending / Active / Expired / Rejected) with counts</li><li>Table: receipt thumb, payer, course, amount, status, received time</li></ul></div>
+            <div><h3>What you can do</h3><ul><li>Click any row to inspect the full-size receipt</li><li>Approve to start the validity window</li><li>Reject with a note that explains why</li></ul></div>
+          </div>
+        </section>
+
+        <section class="screen">
+          <div class="screen-head">
+            <span class="screen-num">15</span>
+            <div>
+              <h2>Receipt Verification Drawer</h2>
+              <p class="summary">Full-size receipt + payer contact + admin note. Approve sets activated/expires timestamps; Reject saves a reason.</p>
+            </div>
+          </div>
+          <img src="screenshots-admin/admin-15-purchase-drawer.png" alt="Receipt Verification Drawer" />
+          <div class="kv">
+            <div><h3>What you see</h3><ul><li>Receipt preview, click to open in a new tab</li><li>Payer email + phone with copy buttons</li><li>Validity badge from the course definition</li><li>Approve & unlock + Reject buttons (only shown when status is Pending)</li></ul></div>
+            <div><h3>What you can do</h3><ul><li>Compare the receipt against the course price visually</li><li>Approve to instantly unlock the course for the student</li><li>Reject with a note explaining why</li></ul></div>
+          </div>
+        </section>
+
+        <section class="screen">
+          <div class="screen-head">
+            <span class="screen-num">16</span>
+            <div>
+              <h2>Certificate Dispatch Queue</h2>
+              <p class="summary">When a student hits 100% on a diploma, a row appears here automatically. Move it through Printed → Dispatched → Delivered.</p>
+            </div>
+          </div>
+          <img src="screenshots-admin/admin-16-certificates-list.png" alt="Certificate Dispatch Queue" />
+          <div class="kv">
+            <div><h3>What you see</h3><ul><li>Status pills (Queued / Printed / Dispatched / Delivered) with counts</li><li>Search across student, course, tracking ID</li><li>Table: student, course, status, tracking, queued time</li></ul></div>
+            <div><h3>What you can do</h3><ul><li>Click any row to open the dispatch drawer</li><li>Filter to a particular status step</li></ul></div>
+          </div>
+        </section>
+
+        <section class="screen">
+          <div class="screen-head">
+            <span class="screen-num">17</span>
+            <div>
+              <h2>Staff & Roles</h2>
+              <p class="summary">Add, edit, deactivate, or delete admin/intern accounts. Strict self-protection prevents an admin from accidentally locking themselves out.</p>
+            </div>
+          </div>
+          <img src="screenshots-admin/admin-17-staff-list.png" alt="Staff & Roles" />
+          <div class="kv">
+            <div><h3>What you see</h3><ul><li>Search, role filter (Admin / Intern)</li><li>Table with 'You' badge on your own row</li><li>Role dropdown inline, status pill, Edit / Pause / Delete icons</li></ul></div>
+            <div><h3>What you can do</h3><ul><li>Invite by email — system generates a one-time temporary password</li><li>Promote intern → admin via dropdown</li><li>Deactivate to revoke login + sessions instantly</li><li>Delete a staff account (blocked for self or last admin)</li></ul></div>
+          </div>
+        </section>
+
+        <section class="screen">
+          <div class="screen-head">
+            <span class="screen-num">18</span>
+            <div>
+              <h2>Invite Staff Modal</h2>
+              <p class="summary">Creates a new admin or intern account. A random 10-char temp password is shown on screen so you can share it manually until Phase 5 wires up email delivery.</p>
+            </div>
+          </div>
+          <img src="screenshots-admin/admin-18-staff-invite.png" alt="Invite Staff Modal" />
+          <div class="kv">
+            <div><h3>What you see</h3><ul><li>Name, email, contact number (10-digit Indian validation), role dropdown</li><li>A yellow help banner explaining the temp-password flow</li></ul></div>
+            <div><h3>What you can do</h3><ul><li>Issue a new staff account in seconds</li></ul></div>
+          </div>
+        </section>
+</body>
+</html>

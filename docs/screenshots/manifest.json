@@ -1,0 +1,97 @@
+[
+  {
+    "slug": "01-homepage",
+    "file": "screenshots/01-homepage.png",
+    "narration": "The public marketing site at /. Hero, trust strip, founder, advisory panel."
+  },
+  {
+    "slug": "02-diploma-listing",
+    "file": "screenshots/02-diploma-listing.png",
+    "narration": "Page 4: Diploma courses, sourced live from the Postgres `courses` table."
+  },
+  {
+    "slug": "03-diploma-detail",
+    "file": "screenshots/03-diploma-detail.png",
+    "narration": "Diploma detail page — pricing card, manual certificate workflow, full curriculum."
+  },
+  {
+    "slug": "04-signup-filled",
+    "file": "screenshots/04-signup-filled.png",
+    "narration": "Demo student signs up. Indian-mobile validation is enforced — non 10-digit phones are rejected."
+  },
+  {
+    "slug": "05-checkout-modal",
+    "file": "screenshots/05-checkout-modal.png",
+    "narration": "Auto-redirected back to the course with the manual QR checkout modal pre-opened. Form fields are pre-filled from the account."
+  },
+  {
+    "slug": "06-receipt-attached",
+    "file": "screenshots/06-receipt-attached.png",
+    "narration": "Student attaches a payment receipt screenshot (we use the logo file as a placeholder for the demo)."
+  },
+  {
+    "slug": "07-checkout-pending",
+    "file": "screenshots/07-checkout-pending.png",
+    "narration": "“Payment under review” — the purchase row sits in `pending_verification` until admin approves it."
+  },
+  {
+    "slug": "08-admin-dashboard",
+    "file": "screenshots/08-admin-dashboard.png",
+    "narration": "Admin lands on the operations console. KPI tiles show pending receipts, today’s leads, certs to dispatch."
+  },
+  {
+    "slug": "09-purchases-pending",
+    "file": "screenshots/09-purchases-pending.png",
+    "narration": "Verification queue — every Buy Now lands here. Receipt thumbnails are inline."
+  },
+  {
+    "slug": "10-receipt-drawer",
+    "file": "screenshots/10-receipt-drawer.png",
+    "narration": "Admin opens the receipt drawer — full-size preview, payer contact (tap-to-call / mail), validity window, admin note."
+  },
+  {
+    "slug": "11-receipt-approved",
+    "file": "screenshots/11-receipt-approved.png",
+    "narration": "Receipt approved. Status flips to Active, `activatedAt` is set, validity (180 days) is calculated server-side."
+  },
+  {
+    "slug": "12-student-dashboard",
+    "file": "screenshots/12-student-dashboard.png",
+    "narration": "Student dashboard now shows the course as Active with the countdown chip."
+  },
+  {
+    "slug": "13-curriculum",
+    "file": "screenshots/13-curriculum.png",
+    "narration": "Curriculum view — modules + lessons, progress bar (currently 0 %)."
+  },
+  {
+    "slug": "14-lesson-player",
+    "file": "screenshots/14-lesson-player.png",
+    "narration": "Video player. Floating watermark with user phone+email; speed (0.5×–2×) and quality controls. Streaming proxied through /api/stream/<JWT>."
+  },
+  {
+    "slug": "15-final-completion",
+    "file": "screenshots/15-final-completion.png",
+    "narration": "Marking the final lesson auto-inserts a row in `certificate_queue`. Student sees “hardcopy certificate queued for dispatch”."
+  },
+  {
+    "slug": "16-curriculum-complete",
+    "file": "screenshots/16-curriculum-complete.png",
+    "narration": "Curriculum now shows 100 % complete — every lesson green-ticked, progress bar full."
+  },
+  {
+    "slug": "17-cert-queue",
+    "file": "screenshots/17-cert-queue.png",
+    "narration": "Admin → Certificate dispatch. The demo student’s row is automatically queued — no manual entry needed."
+  },
+  {
+    "slug": "18-cert-drawer",
+    "file": "screenshots/18-cert-drawer.png",
+    "narration": "Drawer with recipient details, shipping address field, courier tracking input, and the Printed → Dispatched → Delivered workflow buttons."
+  },
+  {
+    "slug": "19-cert-dispatched",
+    "file": "screenshots/19-cert-dispatched.png",
+    "narration": "Admin marks Dispatched — `dispatchedAt` stamped, tracking saved. Student would be notified by email/SMS in Phase 5."
+  }
+]
