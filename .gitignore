@@ -44,3 +44,7 @@ next-env.d.ts
 backend/uploads/
 
 node_modules/
+
+# stray installers
+*.pkg
+AWSCLIV2.pkg
