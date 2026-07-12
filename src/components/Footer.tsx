@@ -36,6 +36,7 @@ const cols: {
     items: [
       { label: "About Us", href: "/about" },
       { label: "Contact Us", href: "/contact" },
+      { label: "Founder's Books", href: "/books" },
       { label: "Advisory Panel", href: "/#advisory" },
       {
         label: "Careers / Internships",

@@ -39,11 +39,18 @@ const {
   deleteAchievement,
 } = require('../controllers/achievementsController');
 const {
+  listBooks,
+  createBook,
+  updateBook,
+  deleteBook,
+} = require('../controllers/booksController');
+const {
   uploadTherapistPhoto,
   uploadTeamPhoto,
   uploadAdvisoryPhoto,
   uploadAchievementImage,
   uploadCourseCoverImage,
+  uploadBookCover,
   uploadLessonVideo,
 } = require('../middleware/upload');
 const {
@@ -123,6 +130,12 @@ router.get('/achievements', adminOnly, listAchievements);
 router.post('/achievements', adminOnly, uploadAchievementImage.single('image'), createAchievement);
 router.patch('/achievements/:id', adminOnly, uploadAchievementImage.single('image'), updateAchievement);
 router.delete('/achievements/:id', adminOnly, deleteAchievement);
+
+/* Founder books — admin only */
+router.get('/books', adminOnly, listBooks);
+router.post('/books', adminOnly, uploadBookCover.single('cover'), createBook);
+router.patch('/books/:id', adminOnly, uploadBookCover.single('cover'), updateBook);
+router.delete('/books/:id', adminOnly, deleteBook);
 
 /* Courses — admin only */
 router.get('/courses', adminOnly, asyncRoute(listCourses));

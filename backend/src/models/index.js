@@ -14,6 +14,7 @@ const TeamMember = require('./TeamMember');
 const FoundationContent = require('./FoundationContent');
 const AdvisoryMember = require('./AdvisoryMember');
 const Achievement = require('./Achievement');
+const Book = require('./Book');
 
 /* --------------------------- Associations -------------------------------- */
 
@@ -66,4 +67,5 @@ module.exports = {
   FoundationContent,
   AdvisoryMember,
   Achievement,
+  Book,
 };

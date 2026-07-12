@@ -50,6 +50,7 @@ app.use('/api/courses', require('./routes/courses'));
 app.use('/api/therapists', require('./routes/therapists'));
 app.use('/api/advisory', require('./routes/advisory'));
 app.use('/api/achievements', require('./routes/achievements'));
+app.use('/api/books', require('./routes/books'));
 app.use('/api', require('./routes/team'));
 app.use('/api/purchases', require('./routes/purchases'));
 app.use('/api/admin', require('./routes/admin'));

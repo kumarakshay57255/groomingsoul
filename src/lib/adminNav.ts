@@ -5,6 +5,7 @@
 import type { LucideIcon } from "lucide-react";
 import {
   Award,
+  BookMarked,
   GraduationCap,
   Inbox,
   LayoutDashboard,
@@ -110,6 +111,12 @@ export const adminNavGroups: AdminNavGroup[] = [
         label: "Founder Achievements",
         icon: Trophy,
         phase: "4.12",
+      },
+      {
+        href: "/admin/books",
+        label: "Books",
+        icon: BookMarked,
+        phase: "4.13",
       },
       {
         href: "/admin/courses",
