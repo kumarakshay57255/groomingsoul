@@ -8,6 +8,7 @@ export type AdminCourseSummary = {
   instructor: string | null;
   description: string | null;
   coverColor: string;
+  coverImagePath: string | null;
   category: CourseCategory;
   type: CourseType;
   priceInr: number;
@@ -110,6 +111,31 @@ export async function deleteCourse(
 ): Promise<void> {
   const url = `/api/admin/courses/${encodeURIComponent(id)}${force ? "?force=1" : ""}`;
   await api(url, { method: "DELETE" });
+}
+
+/** Upload a cover image for a course (multipart). */
+export async function uploadCourseCover(
+  id: string,
+  file: File
+): Promise<AdminCourseSummary> {
+  const fd = new FormData();
+  fd.set("image", file);
+  const d = await api<{ ok: true; course: AdminCourseSummary }>(
+    `/api/admin/courses/${encodeURIComponent(id)}/cover`,
+    { method: "POST", body: fd }
+  );
+  return d.course;
+}
+
+/** Remove a course's cover image (falls back to the cover colour). */
+export async function removeCourseCover(
+  id: string
+): Promise<AdminCourseSummary> {
+  const d = await api<{ ok: true; course: AdminCourseSummary }>(
+    `/api/admin/courses/${encodeURIComponent(id)}/cover`,
+    { method: "DELETE" }
+  );
+  return d.course;
 }
 
 /* ----------------- Modules ----------------- */

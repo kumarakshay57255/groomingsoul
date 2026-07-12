@@ -16,6 +16,7 @@ function publicCourse(course) {
     instructor: course.instructor,
     description: course.description,
     coverColor: course.coverColor,
+    coverImagePath: course.coverImagePath,
     category: course.category,
     type: course.type,
     priceInr: course.priceInr,

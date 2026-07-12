@@ -1,14 +1,17 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowUpRight, Clock4, GraduationCap, Lock } from "lucide-react";
 import {
   formatInr,
   categoryLabel,
+  courseCoverUrl,
   type CourseSummary,
 } from "@/lib/courses";
 
 export function CourseCard({ course }: { course: CourseSummary }) {
   const base =
     course.type === "diploma" ? "/diploma/courses" : "/academy/courses";
+  const coverImage = courseCoverUrl(course);
   const validityLabel =
     course.validityDays >= 180
       ? "6 months access"
@@ -24,18 +27,32 @@ export function CourseCard({ course }: { course: CourseSummary }) {
       className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-line bg-cream transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_45px_-25px_rgba(92,58,46,0.35)]"
     >
       <div
-        aria-hidden
         className="relative h-32 overflow-hidden"
         style={{ backgroundColor: course.coverColor }}
       >
-        <div
-          className="absolute inset-0 opacity-[0.18]"
-          style={{
-            backgroundImage:
-              "radial-gradient(rgba(255,255,255,0.6) 1px, transparent 1px)",
-            backgroundSize: "14px 14px",
-          }}
-        />
+        {coverImage ? (
+          <>
+            <Image
+              src={coverImage}
+              alt={course.title}
+              fill
+              sizes="(min-width:1024px) 30vw, (min-width:640px) 45vw, 90vw"
+              className="object-cover transition-transform duration-500 group-hover:scale-[1.05]"
+            />
+            {/* scrim so the category chip + arrow stay legible on any photo */}
+            <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-brand-brown/55 to-transparent" />
+          </>
+        ) : (
+          <div
+            aria-hidden
+            className="absolute inset-0 opacity-[0.18]"
+            style={{
+              backgroundImage:
+                "radial-gradient(rgba(255,255,255,0.6) 1px, transparent 1px)",
+              backgroundSize: "14px 14px",
+            }}
+          />
+        )}
         <div className="absolute bottom-3 left-4 right-4 flex items-end justify-between">
           <span className="rounded-full bg-cream/95 px-2.5 py-1 text-[0.65rem] uppercase tracking-wider text-brand-brown">
             {categoryLabel[course.category]}

@@ -1,12 +1,14 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import {
   ArrowLeft,
   CheckCircle2,
   FileVideo,
+  ImagePlus,
   Loader2,
   Pencil,
   Plus,
@@ -28,10 +30,12 @@ import {
   fetchAdminCourse,
   formatDuration,
   formatInr,
+  removeCourseCover,
   updateCourse,
   updateModule,
+  uploadCourseCover,
 } from "@/lib/adminCourses";
-import type { CourseCategory, CourseType } from "@/lib/courses";
+import { courseCoverUrl, type CourseCategory, type CourseType } from "@/lib/courses";
 import { LessonEditor } from "./LessonEditor";
 
 type FormState = {
@@ -122,6 +126,8 @@ export function CourseEditor({ courseId }: { courseId: string | "new" }) {
     | { mode: "rename"; module: AdminModule }
     | null
   >(null);
+  const [coverBusy, setCoverBusy] = useState(false);
+  const coverInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     if (courseId === "new") return;
@@ -175,6 +181,40 @@ export function CourseEditor({ courseId }: { courseId: string | "new" }) {
       setError(friendlyError(err));
     } finally {
       setSavingCourse(false);
+    }
+  }
+
+  async function handleCoverUpload(file: File | null) {
+    if (!file || courseId === "new") return;
+    setCoverBusy(true);
+    setError(null);
+    try {
+      const updated = await uploadCourseCover(courseId, file);
+      setCourse((prev) =>
+        prev ? { ...prev, coverImagePath: updated.coverImagePath } : prev
+      );
+      setToast("Cover image updated.");
+      setTimeout(() => setToast(null), 1800);
+    } catch (err) {
+      setError(friendlyError(err));
+    } finally {
+      setCoverBusy(false);
+      if (coverInputRef.current) coverInputRef.current.value = "";
+    }
+  }
+
+  async function handleCoverRemove() {
+    if (courseId === "new") return;
+    setCoverBusy(true);
+    try {
+      const updated = await removeCourseCover(courseId);
+      setCourse((prev) =>
+        prev ? { ...prev, coverImagePath: updated.coverImagePath } : prev
+      );
+    } catch (err) {
+      setError(friendlyError(err));
+    } finally {
+      setCoverBusy(false);
     }
   }
 
@@ -405,9 +445,79 @@ export function CourseEditor({ courseId }: { courseId: string | "new" }) {
             onChange={(v) => setForm({ ...form, estimatedHours: v })}
             min={0}
           />
+          {/* Cover image (thumbnail) */}
+          <div className="sm:col-span-2">
+            <label className="text-[0.7rem] uppercase tracking-[0.14em] text-sage-deep">
+              Cover image · <span className="text-ink-soft/70">recommended</span>
+            </label>
+            {courseId === "new" ? (
+              <p className="mt-1.5 rounded-xl border border-dashed border-line bg-cream px-4 py-4 text-sm text-ink-soft">
+                Create the course first, then upload a cover image here.
+              </p>
+            ) : (
+              <>
+                <input
+                  ref={coverInputRef}
+                  type="file"
+                  accept="image/jpeg,image/png,image/webp"
+                  className="hidden"
+                  onChange={(e) => handleCoverUpload(e.target.files?.[0] ?? null)}
+                />
+                {course?.coverImagePath ? (
+                  <div className="relative mt-1.5 h-40 overflow-hidden rounded-xl border border-line">
+                    <Image
+                      src={courseCoverUrl({ coverImagePath: course.coverImagePath }) as string}
+                      alt="Course cover"
+                      fill
+                      sizes="480px"
+                      className="object-cover"
+                    />
+                    <div className="absolute right-2 top-2 flex gap-2">
+                      <button
+                        type="button"
+                        disabled={coverBusy}
+                        onClick={() => coverInputRef.current?.click()}
+                        className="rounded-full bg-cream/90 px-3 py-1 text-xs font-medium text-brand-brown disabled:opacity-60"
+                      >
+                        Change
+                      </button>
+                      <button
+                        type="button"
+                        disabled={coverBusy}
+                        onClick={handleCoverRemove}
+                        className="rounded-full bg-cream/90 px-3 py-1 text-xs font-medium text-coral disabled:opacity-60"
+                      >
+                        Remove
+                      </button>
+                    </div>
+                    {coverBusy && (
+                      <div className="absolute inset-0 grid place-items-center bg-brand-brown/30">
+                        <Loader2 size={20} className="animate-spin text-cream" />
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <button
+                    type="button"
+                    disabled={coverBusy}
+                    onClick={() => coverInputRef.current?.click()}
+                    className="mt-1.5 flex w-full flex-col items-center gap-2 rounded-xl border border-dashed border-gold/50 bg-cream px-4 py-6 text-sm text-ink-soft hover:border-gold disabled:opacity-60"
+                  >
+                    {coverBusy ? (
+                      <Loader2 size={22} className="animate-spin text-gold" />
+                    ) : (
+                      <ImagePlus size={22} className="text-gold" />
+                    )}
+                    Click to upload — JPG, PNG or WebP (max 5 MB, ~16:9)
+                  </button>
+                )}
+              </>
+            )}
+          </div>
+
           <div>
             <label className="text-[0.7rem] uppercase tracking-[0.14em] text-sage-deep">
-              Cover colour
+              Cover colour · <span className="text-ink-soft/70">fallback</span>
             </label>
             <div className="mt-1.5 flex items-center gap-3">
               <input
@@ -426,6 +536,9 @@ export function CourseEditor({ courseId }: { courseId: string | "new" }) {
                 className="flex-1 rounded-xl border border-line bg-cream px-3 py-2 font-mono text-sm outline-none focus:border-clinical"
               />
             </div>
+            <p className="mt-1 text-[0.72rem] text-ink-soft/70">
+              Shown on the card when no cover image is uploaded.
+            </p>
           </div>
           <div className="sm:col-span-2">
             <label className="text-[0.7rem] uppercase tracking-[0.14em] text-sage-deep">

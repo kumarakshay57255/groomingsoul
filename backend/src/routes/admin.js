@@ -43,6 +43,7 @@ const {
   uploadTeamPhoto,
   uploadAdvisoryPhoto,
   uploadAchievementImage,
+  uploadCourseCoverImage,
   uploadLessonVideo,
 } = require('../middleware/upload');
 const {
@@ -51,6 +52,8 @@ const {
   createCourse,
   updateCourse,
   deleteCourse,
+  uploadCourseCover,
+  removeCourseCover,
   createModule,
   updateModule,
   deleteModule,
@@ -127,6 +130,8 @@ router.get('/courses/:id', adminOnly, asyncRoute(getCourse));
 router.post('/courses', adminOnly, asyncRoute(createCourse));
 router.patch('/courses/:id', adminOnly, asyncRoute(updateCourse));
 router.delete('/courses/:id', adminOnly, asyncRoute(deleteCourse));
+router.post('/courses/:id/cover', adminOnly, uploadCourseCoverImage.single('image'), asyncRoute(uploadCourseCover));
+router.delete('/courses/:id/cover', adminOnly, asyncRoute(removeCourseCover));
 
 /* Modules — admin only */
 router.post('/courses/:id/modules', adminOnly, asyncRoute(createModule));

@@ -1,4 +1,4 @@
-import { api } from "./api";
+import { api, API_BASE_URL } from "./api";
 
 export type CourseCategory =
   | "11-12"
@@ -16,6 +16,7 @@ export type CourseSummary = {
   instructor: string | null;
   description: string | null;
   coverColor: string;
+  coverImagePath: string | null;
   category: CourseCategory;
   type: CourseType;
   priceInr: number;
@@ -85,6 +86,16 @@ export async function fetchCourse(slug: string): Promise<CourseDetail | null> {
   } catch {
     return null;
   }
+}
+
+/** Full URL for a course cover image, or null when none is set. */
+export function courseCoverUrl(
+  c: Pick<CourseSummary, "coverImagePath">
+): string | null {
+  if (!c.coverImagePath) return null;
+  return c.coverImagePath.startsWith("http")
+    ? c.coverImagePath
+    : `${API_BASE_URL}${c.coverImagePath}`;
 }
 
 export function formatInr(rupees: number): string {

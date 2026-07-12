@@ -31,6 +31,7 @@ function publicCourse(c) {
     instructor: c.instructor,
     description: c.description,
     coverColor: c.coverColor,
+    coverImagePath: c.coverImagePath,
     category: c.category,
     type: c.type,
     priceInr: c.priceInr,
@@ -443,12 +444,46 @@ async function deleteLesson(req, res) {
   res.json({ ok: true, id: req.params.lessonId });
 }
 
+/* ------------------------- cover image ---------------------------- */
+
+function deleteCoverIfExists(imagePath) {
+  if (!imagePath || !imagePath.startsWith('/uploads/courses/')) return;
+  const rel = imagePath.replace('/uploads/', '');
+  const abs = path.resolve(__dirname, '..', '..', env.uploads.dir, rel);
+  fs.unlink(abs, () => {});
+}
+
+/** POST /api/admin/courses/:id/cover (multipart 'image') */
+async function uploadCourseCover(req, res) {
+  const c = await Course.findByPk(req.params.id);
+  if (!c) return res.status(404).json({ ok: false, error: 'Not found' });
+  if (!req.file) {
+    return res.status(400).json({ ok: false, error: 'No image uploaded.' });
+  }
+  deleteCoverIfExists(c.coverImagePath);
+  c.coverImagePath = `/uploads/courses/${req.file.filename}`;
+  await c.save();
+  res.json({ ok: true, course: publicCourse(c) });
+}
+
+/** DELETE /api/admin/courses/:id/cover */
+async function removeCourseCover(req, res) {
+  const c = await Course.findByPk(req.params.id);
+  if (!c) return res.status(404).json({ ok: false, error: 'Not found' });
+  deleteCoverIfExists(c.coverImagePath);
+  c.coverImagePath = null;
+  await c.save();
+  res.json({ ok: true, course: publicCourse(c) });
+}
+
 module.exports = {
   listCourses,
   getCourse,
   createCourse,
   updateCourse,
   deleteCourse,
+  uploadCourseCover,
+  removeCourseCover,
   createModule,
   updateModule,
   deleteModule,

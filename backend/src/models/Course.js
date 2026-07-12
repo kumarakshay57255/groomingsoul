@@ -15,6 +15,8 @@ Course.init(
     instructor: { type: DataTypes.STRING },
     description: { type: DataTypes.TEXT },
     coverColor: { type: DataTypes.STRING, defaultValue: '#3F5F8A' },
+    /** Optional cover thumbnail; when set, cards show it instead of coverColor. */
+    coverImagePath: { type: DataTypes.STRING },
     /**
      * Academy categories: 11-12 | cuet-ug | cuet-pg | net-jrf
      * Diploma category: diploma
