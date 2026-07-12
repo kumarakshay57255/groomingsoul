@@ -7,8 +7,8 @@ export const site = {
   address: "India",
   whatsapp: "https://wa.me/919389872523",
   socials: {
-    instagram: "https://instagram.com/groomingsouls",
-    linkedin: "https://linkedin.com/company/groomingsouls",
+    instagram: "https://www.instagram.com/grooming_souls",
+    linkedin: "https://www.linkedin.com/company/grooming-souls/",
     youtube: "https://youtube.com/@groomingsouls",
   },
   nav: [
