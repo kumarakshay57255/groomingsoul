@@ -11,7 +11,7 @@ import {
   ShieldCheck,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
-import { InstagramIcon, LinkedinIcon, YoutubeIcon } from "./SocialIcons";
+import { InstagramIcon, LinkedinIcon } from "./SocialIcons";
 import { Logo } from "./Logo";
 import { site } from "@/lib/site";
 
@@ -108,9 +108,6 @@ export function Footer() {
                 </SocialLink>
                 <SocialLink href={site.socials.linkedin} label="LinkedIn">
                   <LinkedinIcon className="h-4 w-4" />
-                </SocialLink>
-                <SocialLink href={site.socials.youtube} label="YouTube">
-                  <YoutubeIcon className="h-4 w-4" />
                 </SocialLink>
               </div>
             </div>
