@@ -33,9 +33,16 @@ const {
   deleteAdvisory,
 } = require('../controllers/advisoryController');
 const {
+  listAchievements,
+  createAchievement,
+  updateAchievement,
+  deleteAchievement,
+} = require('../controllers/achievementsController');
+const {
   uploadTherapistPhoto,
   uploadTeamPhoto,
   uploadAdvisoryPhoto,
+  uploadAchievementImage,
   uploadLessonVideo,
 } = require('../middleware/upload');
 const {
@@ -107,6 +114,12 @@ router.post('/advisory', adminOnly, uploadAdvisoryPhoto.single('photo'), createA
 router.patch('/advisory/:id', adminOnly, uploadAdvisoryPhoto.single('photo'), updateAdvisory);
 router.post('/advisory/:id/archive', adminOnly, setArchiveAdvisory);
 router.delete('/advisory/:id', adminOnly, deleteAdvisory);
+
+/* Founder achievements — admin only */
+router.get('/achievements', adminOnly, listAchievements);
+router.post('/achievements', adminOnly, uploadAchievementImage.single('image'), createAchievement);
+router.patch('/achievements/:id', adminOnly, uploadAchievementImage.single('image'), updateAchievement);
+router.delete('/achievements/:id', adminOnly, deleteAchievement);
 
 /* Courses — admin only */
 router.get('/courses', adminOnly, asyncRoute(listCourses));

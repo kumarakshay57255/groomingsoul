@@ -11,6 +11,7 @@ import {
   ListChecks,
   ScrollText,
   Stethoscope,
+  Trophy,
   Truck,
   UserCog,
   Users,
@@ -103,6 +104,12 @@ export const adminNavGroups: AdminNavGroup[] = [
         label: "Advisory Panel",
         icon: Award,
         phase: "4.5",
+      },
+      {
+        href: "/admin/achievements",
+        label: "Founder Achievements",
+        icon: Trophy,
+        phase: "4.12",
       },
       {
         href: "/admin/courses",

@@ -13,6 +13,7 @@ const Therapist = require('./Therapist');
 const TeamMember = require('./TeamMember');
 const FoundationContent = require('./FoundationContent');
 const AdvisoryMember = require('./AdvisoryMember');
+const Achievement = require('./Achievement');
 
 /* --------------------------- Associations -------------------------------- */
 
@@ -64,4 +65,5 @@ module.exports = {
   TeamMember,
   FoundationContent,
   AdvisoryMember,
+  Achievement,
 };

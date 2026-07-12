@@ -34,6 +34,7 @@ const uploadReceipt = imageUploader('receipts');
 const uploadTherapistPhoto = imageUploader('therapists');
 const uploadTeamPhoto = imageUploader('team');
 const uploadAdvisoryPhoto = imageUploader('advisory');
+const uploadAchievementImage = imageUploader('achievements');
 
 /**
  * Lesson video uploader — larger size cap (~1 GB), MP4/WebM/MOV only.
@@ -78,6 +79,7 @@ module.exports = {
   uploadTherapistPhoto,
   uploadTeamPhoto,
   uploadAdvisoryPhoto,
+  uploadAchievementImage,
   uploadLessonVideo,
   imageUploader,
 };

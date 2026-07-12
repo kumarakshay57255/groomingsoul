@@ -2,6 +2,7 @@ import { Nav } from "@/components/Nav";
 import { Hero } from "@/components/Hero";
 import { CommitmentBand } from "@/components/CommitmentBand";
 import { FoundersCorner } from "@/components/FoundersCorner";
+import { FounderAchievements } from "@/components/FounderAchievements";
 import { RootedInValues } from "@/components/RootedInValues";
 import { EveryMind } from "@/components/EveryMind";
 import { RealPeople } from "@/components/RealPeople";
@@ -11,14 +12,16 @@ import { Footer } from "@/components/Footer";
 import { WhatsAppFloat } from "@/components/WhatsAppFloat";
 import { fetchFoundationContent, fetchTeam } from "@/lib/team";
 import { fetchAdvisory } from "@/lib/advisory";
+import { fetchAchievements } from "@/lib/achievements";
 
 export const dynamic = "force-dynamic";
 
 export default async function Home() {
-  const [team, content, advisory] = await Promise.all([
+  const [team, content, advisory, achievements] = await Promise.all([
     fetchTeam(),
     fetchFoundationContent(),
     fetchAdvisory(),
+    fetchAchievements(),
   ]);
   const founder = team.find((m) => m.isFounder) ?? null;
 
@@ -29,6 +32,7 @@ export default async function Home() {
         <Hero />
         <CommitmentBand />
         <FoundersCorner founder={founder} content={content} />
+        <FounderAchievements achievements={achievements} />
         <RootedInValues />
         <EveryMind />
         <RealPeople />
