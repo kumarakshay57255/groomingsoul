@@ -351,6 +351,7 @@ function InviteModal({
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
+  const [password, setPassword] = useState("");
   const [role, setRole] = useState<StaffRole>("intern");
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -362,6 +363,10 @@ function InviteModal({
       setError("Enter a valid 10-digit Indian mobile number.");
       return;
     }
+    if (password && password.length < 6) {
+      setError("Password must be at least 6 characters.");
+      return;
+    }
     setSubmitting(true);
     try {
       const { staff, devTempPassword } = await inviteStaff({
@@ -369,6 +374,7 @@ function InviteModal({
         email: email.trim().toLowerCase(),
         phone: normalizeIndianPhone(phone)!,
         role,
+        password: password.trim() || undefined,
       });
       onCreated(staff, devTempPassword);
     } catch (err) {
@@ -456,11 +462,27 @@ function InviteModal({
             </p>
           </div>
 
+          <div>
+            <label className="text-[0.7rem] uppercase tracking-[0.14em] text-sage-deep">
+              Password
+            </label>
+            <input
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              type="text"
+              autoComplete="new-password"
+              minLength={6}
+              placeholder="Set a login password (min 6 characters)"
+              className="mt-1.5 w-full rounded-xl border border-line bg-cream px-3 py-2 text-sm outline-none focus:border-clinical"
+            />
+            <p className="mt-1 text-[0.7rem] text-ink-soft">
+              This is the password they&apos;ll log in with. Share it with them.
+            </p>
+          </div>
+
           <div className="rounded-xl bg-sun/20 px-3 py-2 text-[0.78rem] text-brand-brown">
             <UserCog size={12} className="-mt-0.5 mr-1 inline" />
-            We&apos;ll generate a one-time temporary password. Email delivery
-            arrives with Phase 5 — for now you&apos;ll see it on screen so you
-            can share it manually.
+            Leave the password blank to auto-generate a temporary one instead.
           </div>
 
           {error && (

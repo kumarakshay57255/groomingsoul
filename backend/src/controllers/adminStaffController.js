@@ -68,9 +68,16 @@ async function inviteStaff(req, res) {
   const email = typeof req.body.email === 'string' ? req.body.email.trim().toLowerCase() : '';
   const role = typeof req.body.role === 'string' ? req.body.role : 'intern';
   const phone = normalizeIndianPhone(req.body.phone);
+  const chosenPassword =
+    typeof req.body.password === 'string' ? req.body.password : '';
 
   if (!name || !email) {
     return res.status(400).json({ ok: false, error: 'Name and email are required.' });
+  }
+  if (chosenPassword && chosenPassword.length < 6) {
+    return res
+      .status(400)
+      .json({ ok: false, error: 'Password must be at least 6 characters.' });
   }
   if (!STAFF_ROLES.includes(role)) {
     return res.status(400).json({ ok: false, error: 'Invalid role.' });
@@ -88,8 +95,12 @@ async function inviteStaff(req, res) {
       .json({ ok: false, error: 'A user with this email already exists.' });
   }
 
-  const tempPassword = crypto.randomBytes(6).toString('base64url');
-  const passwordHash = await bcrypt.hash(tempPassword, 10);
+  // If the admin set a password, use it (account works immediately).
+  // Otherwise generate a temporary one (dev-only reveal).
+  const tempPassword = chosenPassword
+    ? null
+    : crypto.randomBytes(6).toString('base64url');
+  const passwordHash = await bcrypt.hash(chosenPassword || tempPassword, 10);
 
   const user = await User.create({
     name,
@@ -98,15 +109,16 @@ async function inviteStaff(req, res) {
     passwordHash,
     role,
     isActive: true,
-    emailVerified: false,
+    emailVerified: !!chosenPassword,
   });
 
   console.log(
-    `[staff] invited ${role} ${email} — TEMP PASSWORD: ${tempPassword}`
+    `[staff] invited ${role} ${email}` +
+      (tempPassword ? ` — TEMP PASSWORD: ${tempPassword}` : ' — password set by admin')
   );
 
   const body = { ok: true, staff: adminStaff(user) };
-  if (env.nodeEnv !== 'production') body.devTempPassword = tempPassword;
+  if (tempPassword && env.nodeEnv !== 'production') body.devTempPassword = tempPassword;
   res.status(201).json(body);
 }
 

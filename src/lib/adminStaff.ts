@@ -40,6 +40,7 @@ export async function inviteStaff(input: {
   email: string;
   phone: string;
   role: StaffRole;
+  password?: string;
 }): Promise<{ staff: AdminStaffMember; devTempPassword?: string }> {
   const d = await api<{
     ok: true;
