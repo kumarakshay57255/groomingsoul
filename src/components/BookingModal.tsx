@@ -130,7 +130,7 @@ export function BookingModal({ open, onClose, therapist }: BookingModalProps) {
               <form onSubmit={handleSubmit} className="p-7 sm:p-9">
                 <div className="flex items-center gap-2 text-xs uppercase tracking-[0.22em] text-sage-deep">
                   <CalendarClock size={14} />
-                  Free initial session
+                  {therapist ? "Session request" : "Free initial session"}
                 </div>
                 <h2
                   id="booking-title"
@@ -142,8 +142,8 @@ export function BookingModal({ open, onClose, therapist }: BookingModalProps) {
                 </h2>
                 <p className="mt-2 text-sm text-ink-soft">
                   Share a few details and our team will reach out within{" "}
-                  <strong>24 hours</strong> to confirm your slot. No payment
-                  required.
+                  <strong>24 hours</strong> to confirm your slot.
+                  {therapist ? "" : " Completely free — no payment required."}
                 </p>
 
                 <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">

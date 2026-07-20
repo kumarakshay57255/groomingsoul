@@ -75,7 +75,7 @@ export function Nav() {
                 href="/therapy"
                 className="inline-flex items-center gap-2 rounded-full border border-gold/60 px-5 py-2.5 text-sm font-medium text-gold transition-colors hover:bg-gold hover:text-navy"
               >
-                Book a free session
+                Book a session
                 <Calendar size={14} />
               </Link>
             </>
@@ -144,7 +144,7 @@ export function Nav() {
                 onClick={() => setOpen(false)}
                 className="inline-flex items-center justify-center gap-2 rounded-full border border-gold/60 px-5 py-3 text-sm font-medium text-gold"
               >
-                Book a free session
+                Book a session
                 <Calendar size={14} />
               </Link>
             </div>

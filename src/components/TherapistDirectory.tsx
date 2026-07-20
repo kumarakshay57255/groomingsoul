@@ -30,6 +30,11 @@ export function TherapistDirectory({
     setOpen(true);
   }
 
+  function bookFree() {
+    setSelected(null);
+    setOpen(true);
+  }
+
   return (
     <section id="therapists" className="py-20 sm:py-24">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
@@ -46,6 +51,29 @@ export function TherapistDirectory({
             Every therapist on our panel has been credential-verified and works
             under our Advisory Panel&apos;s clinical standards.
           </p>
+        </div>
+
+        {/* Free session — no doctor selection needed */}
+        <div className="mt-8 flex flex-col items-start justify-between gap-4 rounded-3xl border border-sage/30 bg-sage-soft/40 p-6 sm:flex-row sm:items-center sm:p-7">
+          <div>
+            <p className="text-[0.7rem] font-semibold uppercase tracking-[0.16em] text-sage-deep">
+              Not sure who to choose?
+            </p>
+            <h3 className="mt-1 font-display text-2xl text-brand-brown">
+              Book a free session — no doctor profile needed.
+            </h3>
+            <p className="mt-1 text-sm text-ink-soft">
+              Tell us a little about yourself and our team will match you and reach
+              out within 24 hours. Completely free.
+            </p>
+          </div>
+          <button
+            type="button"
+            onClick={bookFree}
+            className="inline-flex shrink-0 items-center gap-2 rounded-full bg-sage-deep px-6 py-3 text-sm font-medium text-cream transition-colors hover:bg-sage-deep/85"
+          >
+            Book a free session
+          </button>
         </div>
 
         {/* Filter chips */}
@@ -140,7 +168,7 @@ export function TherapistDirectory({
                   disabled={!t.acceptingNew}
                   className="mt-6 inline-flex items-center justify-center rounded-full bg-clinical px-5 py-3 text-sm font-medium text-cream transition-all hover:bg-clinical-deep disabled:cursor-not-allowed disabled:bg-brand-brown-light/60"
                 >
-                  {t.acceptingNew ? "Book a free session" : "Join the waitlist"}
+                  {t.acceptingNew ? "Book a session" : "Join the waitlist"}
                 </button>
               </div>
             </motion.article>

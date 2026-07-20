@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Grooming Souls — Today's Updates</title>
+<style>
+  :root{
+    --cream:#FBF7EE; --cream-deep:#F4ECDB;
+    --ink:#2A2520; --ink-soft:#574B40; --muted:#8A7F6F;
+    --navy:#012057; --sage-deep:#5A6A3F; --sage-soft:#E7ECDA;
+    --gold:#C9A356; --gold-deep:#A9863B; --brown:#5C3A2E; --line:#E3DAC6;
+    --serif:"Cormorant Garamond", Georgia, "Times New Roman", serif;
+    --sans:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{font-family:var(--sans);color:var(--ink);line-height:1.5;font-size:13px;background:#fff}
+  h1,h2,h3{font-family:var(--serif);font-weight:600;color:var(--navy);margin:0}
+  .page{padding:44px 50px;min-height:1040px;position:relative;page-break-after:always}
+  .page:last-child{page-break-after:auto}
+  .kicker{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--sage-deep);font-weight:700}
+  .num{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--navy);color:#F3EEDD;font-family:var(--sans);font-weight:700;font-size:12px;margin-right:8px;vertical-align:middle}
+  .gold-rule{height:2px;width:52px;background:var(--gold);border-radius:2px;margin:8px 0 16px}
+  .lead{color:var(--ink-soft);max-width:70ch;margin:0 0 14px;font-size:13px}
+  .tag{display:inline-block;background:var(--sage-soft);color:var(--sage-deep);border-radius:999px;padding:2px 10px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em}
+  .tag.gold{background:var(--gold);color:var(--navy)}
+
+  .shot{border:1px solid var(--line);border-radius:10px;overflow:hidden;box-shadow:0 12px 26px -16px rgba(1,32,87,.4);margin:6px 0 4px}
+  .shot img{display:block;width:100%}
+  .caption{font-size:10.5px;color:var(--muted);margin:0 0 16px;padding-left:2px}
+  .caption b{color:var(--sage-deep);text-transform:uppercase;letter-spacing:.06em;font-size:9.5px}
+
+  .note{background:var(--sage-soft);border-left:3px solid var(--sage-deep);border-radius:8px;padding:10px 14px;margin:10px 0 0;font-size:12px;color:var(--ink-soft)}
+  .note b{color:var(--sage-deep)}
+  .foot{position:absolute;bottom:20px;left:50px;right:50px;display:flex;justify-content:space-between;font-size:10px;color:var(--muted);border-top:1px solid var(--line);padding-top:8px}
+
+  /* cover */
+  .cover{background:var(--navy);color:#F3EEDD;display:flex;flex-direction:column;justify-content:center;min-height:1040px;padding:70px 58px}
+  .cover .mark{width:88px;height:88px;border:2px solid var(--gold);border-radius:22px;display:grid;place-items:center;font-family:var(--serif);color:var(--gold);font-size:2.2rem;margin-bottom:30px}
+  .cover h1{color:#fff;font-size:3.4rem;line-height:1.02}
+  .cover h1 em{font-style:italic;color:var(--gold)}
+  .cover .sub{color:#C9C7BC;font-size:1.1rem;max-width:40ch;margin-top:14px}
+  .cover ul{margin:26px 0 0;padding:0;list-style:none}
+  .cover li{padding:7px 0;border-bottom:1px solid rgba(255,255,255,.12);font-size:1rem;color:#EDE9DB}
+  .cover li b{color:var(--gold);font-weight:600}
+  .cover .meta{margin-top:auto;font-size:.82rem;color:#B7B4A6;border-top:1px solid rgba(255,255,255,.14);padding-top:16px}
+  .cover .meta b{color:var(--gold)}
+  @page{size:A4;margin:0}
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<section class="page cover">
+  <div class="mark">❧</div>
+  <div class="kicker" style="color:var(--gold)">What we shipped today</div>
+  <h1>Today's <em>Updates</em></h1>
+  <p class="sub">Four new features added to the Grooming Souls platform — shown on the website and in the admin panel.</p>
+  <ul>
+    <li><b>1 —</b> Founder Achievements section</li>
+    <li><b>2 —</b> Founder's Book + Books page (Buy on Amazon)</li>
+    <li><b>3 —</b> Course cover images (thumbnails)</li>
+    <li><b>4 —</b> Updated social links (Instagram &amp; LinkedIn)</li>
+  </ul>
+  <div class="meta">Live at <b>https://groomingsouls.com</b> &nbsp;·&nbsp; Every screenshot below is the real, working feature</div>
+</section>
+
+<!-- 1. ACHIEVEMENTS -->
+<section class="page">
+  <div class="kicker"><span class="num">1</span> Founder Achievements <span class="tag gold">New</span></div>
+  <div class="gold-rule"></div>
+  <p class="lead">A new <b>Achievements &amp; Recognition</b> section on the home page showing the founder's awards and
+  milestones as cards. Your team adds them from the admin — each with an image, year, and description.</p>
+
+  <div class="shot"><img src="shots/home-04.png" alt="Achievements on the website"></div>
+  <p class="caption"><b>On the website</b> — the home page “Milestones that shaped the mission” section, with a card per achievement.</p>
+
+  <div class="shot"><img src="shots/adm-achievements.png" alt="Achievements in the admin"></div>
+  <p class="caption"><b>In the admin</b> — Admin → Founder Achievements: add, edit, publish/unpublish and reorder.</p>
+
+  <div class="note"><b>How it works:</b> add an achievement, tick <b>Published</b>, and it appears on the home page instantly.</div>
+  <div class="foot"><span>Grooming Souls — Today's Updates</span><span>1</span></div>
+</section>
+
+<!-- 2. BOOK -->
+<section class="page">
+  <div class="kicker"><span class="num">2</span> Founder's Book &amp; Books page <span class="tag gold">New</span></div>
+  <div class="gold-rule"></div>
+  <p class="lead">The founder's book <i>“Unseen Minds and Hidden Souls”</i> is now featured on the home page and on a
+  dedicated <b>/books</b> page, each with a <b>“Buy on Amazon”</b> button. Title, cover and description were taken from the Amazon listing.</p>
+
+  <div class="shot"><img src="shots/home-05.png" alt="Featured book on the website"></div>
+  <p class="caption"><b>On the website</b> — the “Published Work” band on the home page, with the real cover and a Buy on Amazon button.</p>
+
+  <div class="shot"><img src="shots/adm-book-form.png" alt="Book form in the admin"></div>
+  <p class="caption"><b>In the admin</b> — Admin → Books: cover upload, title, author, format, Amazon link, description, published toggle.</p>
+
+  <div class="note"><b>Also added:</b> a footer link <b>“Founder's Books”</b> → the /books page, which lists every published book.</div>
+  <div class="foot"><span>Grooming Souls — Today's Updates</span><span>2</span></div>
+</section>
+
+<!-- 3. COURSE COVERS -->
+<section class="page">
+  <div class="kicker"><span class="num">3</span> Course cover images <span class="tag gold">New</span></div>
+  <div class="gold-rule"></div>
+  <p class="lead">Courses can now have a <b>cover image (thumbnail)</b> instead of only a colour. Upload a photo in the
+  admin and it becomes the card image on the Academy/Diploma pages. No image? It falls back to the colour — nothing breaks.</p>
+
+  <div class="shot"><img src="shots/web-academy.png" alt="Course cards on the website"></div>
+  <p class="caption"><b>On the website</b> — the first course now shows an uploaded <b>image</b>; the others use the <b>colour fallback</b>.</p>
+
+  <div class="shot"><img src="shots/adm-course-cover.png" alt="Course cover uploader in the admin"></div>
+  <p class="caption"><b>In the admin</b> — Edit course → “Cover image (recommended)” to upload, with the colour kept as a fallback.</p>
+
+  <div class="note"><b>Backward-compatible:</b> every existing course keeps working — the image is optional.</div>
+  <div class="foot"><span>Grooming Souls — Today's Updates</span><span>3</span></div>
+</section>
+
+<!-- 4. SOCIAL LINKS -->
+<section class="page">
+  <div class="kicker"><span class="num">4</span> Updated social links</div>
+  <div class="gold-rule"></div>
+  <p class="lead">The footer social icons now point to the correct accounts, and the unused YouTube icon was removed.</p>
+
+  <div class="shot"><img src="shots/web-footer.png" alt="Footer with social icons"></div>
+  <p class="caption"><b>On the website</b> — footer now shows only <b>Instagram</b> and <b>LinkedIn</b> (YouTube removed).</p>
+
+  <table style="width:100%;border-collapse:collapse;font-size:12.5px;margin-top:8px">
+    <tr><td style="padding:8px 10px;border-bottom:1px solid var(--line)"><b>Instagram</b></td>
+        <td style="padding:8px 10px;border-bottom:1px solid var(--line)">instagram.com/grooming_souls</td></tr>
+    <tr><td style="padding:8px 10px;border-bottom:1px solid var(--line)"><b>LinkedIn</b></td>
+        <td style="padding:8px 10px;border-bottom:1px solid var(--line)">linkedin.com/company/grooming-souls</td></tr>
+    <tr><td style="padding:8px 10px"><b>YouTube</b></td>
+        <td style="padding:8px 10px">Icon removed from the site</td></tr>
+  </table>
+
+  <div style="margin-top:44px;text-align:center;color:var(--muted);font-size:11px">
+    <div style="font-family:var(--serif);color:var(--gold-deep);font-size:1.5rem">❧</div>
+    All four updates are <b style="color:var(--brown)">live now</b> at groomingsouls.com
+  </div>
+  <div class="foot"><span>Grooming Souls — Today's Updates</span><span>4</span></div>
+</section>
+
+</body>
+</html>

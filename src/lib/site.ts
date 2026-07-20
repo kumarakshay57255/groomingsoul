@@ -26,7 +26,7 @@ export const offers = [
     blurb:
       "Confidential 1-on-1 sessions with verified psychologists. Zero-cost first reach-out.",
     href: "/therapy",
-    cta: "Book a free session",
+    cta: "Book a session",
     tone: "clinical" as const,
   },
   {

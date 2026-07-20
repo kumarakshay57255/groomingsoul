@@ -40,7 +40,7 @@ export function CTABanner() {
             href="/therapy"
             className="group inline-flex items-center justify-center gap-2 rounded-full bg-navy px-7 py-3.5 text-sm font-medium text-cream shadow-sm transition-all hover:bg-navy-deep hover:shadow-lg sm:text-base"
           >
-            Book a free session
+            Book a session
             <ArrowRight
               size={16}
               className="transition-transform group-hover:translate-x-1"

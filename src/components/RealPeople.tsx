@@ -89,7 +89,7 @@ export function RealPeople() {
               href="/therapy"
               className="group mt-4 inline-flex items-center gap-2 rounded-full bg-gold px-6 py-3 text-sm font-medium text-navy transition-all hover:bg-gold-soft"
             >
-              Book a free session
+              Book a session
               <ArrowRight
                 size={15}
                 className="transition-transform group-hover:translate-x-1"
