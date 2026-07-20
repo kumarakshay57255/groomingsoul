@@ -15,6 +15,7 @@ export const site = {
     { label: "Therapy", href: "/therapy" },
     { label: "Academy", href: "/academy" },
     { label: "Diploma", href: "/diploma" },
+    { label: "NGO", href: "/gos-work" },
     { label: "About Us", href: "/about" },
     { label: "Contact", href: "/contact" },
   ],
